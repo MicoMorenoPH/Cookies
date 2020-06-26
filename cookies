@@ -1,0 +1,14 @@
+
+1. STORING DATA ON COOKIES
+HttpCookie cookie = new HttpCookie("User");
+cookie.Values.Add("empRefno", Convert.ToString(dt.Rows[0]["refno"]));
+cookie.Values.Add("EmpID", Convert.ToString(dt.Rows[0]["EmpID"]));
+cookie.Values.Add("EmpName", Convert.ToString(dt.Rows[0]["EmpName"]));
+
+cookie.Expires = DateTime.Now.AddDays(90);
+cookie.HttpOnly = true;
+Response.Cookies.Add(cookie);
+
+2. CONSUMING/RETRIEVING VALUE FROM COOKIES
+HttpCookie cookie = Request.Cookies["User"];
+string yourString  = cookie["empRefno"];
